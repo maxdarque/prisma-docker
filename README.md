@@ -2,7 +2,22 @@
 
 <br />
 
-Please feel free to make suggested improvements and raise issues.
+- Project uses [graphcool/prisma](https://github.com/graphcool/prisma), Docker and AWS RDS MySQL.
+- The goal to is create a graphql server with [`graphql-yoga`](https://github.com/graphcool/graphql-yoga), `prisma` and AWS RDS MySQL.
+- Please feel free to make suggested improvements and raise issues.
+
+## Current status
+
+I'm getting the following error....  :(
+
+```
+Recreating prisma ... done
+Attaching to prisma
+prisma    | Listening for transport dt_socket at address: 8000
+prisma    | Exception in thread "main" java.sql.SQLTransientConnectionException: internalRoot - Connection is not available, request timed out after 5003ms.
+prisma    | Caused by: java.sql.SQLNonTransientConnectionException: Could not connect to address=(host="my-rds-instance.eu-west-1.rds.amazonaws.com")(port=3306)(type=master) : "my-rds-instance.eu-west-1.rds.amazonaws.com"
+prisma    | Caused by: java.net.UnknownHostException: "my-rds-instance.eu-west-1.rds.amazonaws.com"
+```
 
 ## Setting up your AWS MySQL RDS database
 
@@ -46,17 +61,3 @@ Take down the instance
 ```sh
 docker-compose down
 ```
-
-## Current status
-
-I'm getting the following error....:(
-
-```
-Recreating prisma ... done
-Attaching to prisma
-prisma    | Listening for transport dt_socket at address: 8000
-prisma    | Exception in thread "main" java.sql.SQLTransientConnectionException: internalRoot - Connection is not available, request timed out after 5003ms.
-prisma    | Caused by: java.sql.SQLNonTransientConnectionException: Could not connect to address=(host="my-rds-instance.eu-west-1.rds.amazonaws.com")(port=3306)(type=master) : "my-rds-instance.eu-west-1.rds.amazonaws.com"
-prisma    | Caused by: java.net.UnknownHostException: "my-rds-instance.eu-west-1.rds.amazonaws.com"
-```
-
