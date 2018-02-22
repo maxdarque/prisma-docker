@@ -17,7 +17,7 @@ Attaching to prisma
 prisma    | Listening for transport dt_socket at address: 8000
 prisma    | Obtaining exclusive agent lock...
 prisma    | Obtaining exclusive agent lock... Successful.
-prisma    | Fatal error during deployment worker initialization: java.sql.SQLSyntaxErrorException: (conn=2507) Table '${DB_NAME}.Migration' doesn't exist
+prisma    | Fatal error during deployment worker initialization: java.sql.SQLSyntaxErrorException: (conn=2507) Table 'my-db-name.Migration' doesn't exist
 prisma exited with code 255
 ```
 
