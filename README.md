@@ -9,7 +9,7 @@
 
 ## Current status
 
-I'm getting the following error....  :(
+Right now, I get the following error....any thoughts are more than welcome. This is the first time I'm using Docker
 
 ```
 Recreating prisma ... done
@@ -37,6 +37,8 @@ mysql -u {username} -p{password} -h {remote server ip} {DB name}
 - Make sure you have Docker installed
 - Save the [`docker-compose.yml`](./docker-compose.yml) file
 - Create your `.env` file. You can use [`.env.example`](./.env.example) as a template
+
+**Note** When creating your `.env` file, do not use double quotes (`"`). Especially on the DB_HOST because they cause a `java.net.UnknownHostException` error.
 
 For those interested, I'm using the following docker repo: [`prismagraphql/prisma`](https://hub.docker.com/r/prismagraphql/prisma/)
 
