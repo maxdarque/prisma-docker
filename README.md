@@ -16,5 +16,34 @@ Using the local mysql client, connect to your AWS RDS database
 mysql -u {username} -p{password} -h {remote server ip} {DB name}
 ```
 
+## Configure Docker
+
+- Make sure you have Docker installed
+- Save the [`docker-compose.yml`](./docker-compose.yml) file
+- Create your `.env` file. You can use [`.env.example`](./.env.example) as a template
+
+## Launch Docker
+
+The following command starts the docker instance using the docker-compose.yml file
+
+```sh
+docker-compose up 
+```
+
+Check your instance is running
+```sh
+docker ps
+```
+
+Get the logs
+```sh
+docker logs prisma
+```
+
+Take down the instance
+```sh
+docker-compose down
+```
+
 ## Tutorial to follow
 
