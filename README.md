@@ -57,6 +57,15 @@ Before applying that definition, we have to generate a public/private-keypair so
 
 Make sure to store those values in a safe place. Now, copy the public key and paste it into your `.env` file under `CLUSTER_PUBLIC_KEY=your-key`.
 
+Copy and paste the private key into `~/.prisma/config.yml` 
+
+```
+clusters:
+  example-cluster:
+    host: 'http://localhost:4466'
+    clusterSecret: my-private-key
+```
+
 ## Launch Docker
 
 The following command starts the docker instance using the docker-compose.yml file
