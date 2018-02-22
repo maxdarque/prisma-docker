@@ -22,6 +22,8 @@ mysql -u {username} -p{password} -h {remote server ip} {DB name}
 - Save the [`docker-compose.yml`](./docker-compose.yml) file
 - Create your `.env` file. You can use [`.env.example`](./.env.example) as a template
 
+For those interested, I'm using the following docker repo: [`prismagraphql/prisma`](https://hub.docker.com/r/prismagraphql/prisma/)
+
 ## Launch Docker
 
 The following command starts the docker instance using the docker-compose.yml file
