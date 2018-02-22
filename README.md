@@ -9,17 +9,7 @@
 
 ## Current status
 
-Right now, I get the following error....any thoughts are more than welcome. 
-
-```
-Recreating prisma ... done
-Attaching to prisma
-prisma    | Listening for transport dt_socket at address: 8000
-prisma    | Obtaining exclusive agent lock...
-prisma    | Obtaining exclusive agent lock... Successful.
-prisma    | Fatal error during deployment worker initialization: java.sql.SQLSyntaxErrorException: (conn=2507) Table 'my-db-name.Migration' doesn't exist
-prisma exited with code 255
-```
+It is working
 
 ## Setting up your AWS MySQL RDS database
 
@@ -38,6 +28,7 @@ mysql -u {username} -p{password} -h {remote server ip} {DB name}
 - Make sure you have Docker installed
 - Save the [`docker-compose.yml`](./docker-compose.yml) file
 - Create your `.env` file. You can use [`.env.example`](./.env.example) as a template
+- `SQL_INTERNAL_DATABASE` needs to be set to `graphcool`. I think it might be an internal db used by prisma and the name of the db is not related to your db name in AWS
 
 **Note** When creating your `.env` file, do not use double quotes (`"`). Especially on the DB_HOST because they cause a `java.net.UnknownHostException` error.
 
