@@ -34,6 +34,29 @@ mysql -u {username} -p{password} -h {remote server ip} {DB name}
 
 For those interested, I'm using the following docker repo: [`prismagraphql/prisma`](https://hub.docker.com/r/prismagraphql/prisma/)
 
+## Configure Prisma
+
+Open `~/.prisma/config.yml` and add a new entry (here called example-cluster) to the clusters map:
+
+```
+clusters:
+  example-cluster:
+    host: 'http://localhost:4466'
+```
+
+Before applying that definition, we have to generate a public/private-keypair so that the CLI is able to communicate with this Prisma server. Head over to https://api.cloud.prisma.sh/ and execute the following query:
+
+```
+{
+  generateKeypair {
+    public
+    private
+  }
+}
+```
+
+Make sure to store those values in a safe place. Now, copy the public key and paste it into your `.env` file under `CLUSTER_PUBLIC_KEY=your-key`.
+
 ## Launch Docker
 
 The following command starts the docker instance using the docker-compose.yml file
@@ -52,7 +75,35 @@ Get the logs
 docker logs prisma
 ```
 
-Take down the instance
+Your instance playground should now be available at http://localhost:4466/cluster
+
+If you need it you can use the following to take down the instance
 ```sh
 docker-compose down
+```
+
+## Deploy your prisma service
+
+Initialize your project using
+
+```
+prisma init
+```
+
+Deploy your project
+
+```
+prisma deploy
+```
+
+Select your new private cluster (in this case `example-cluster`)
+
+```
+? Please choose the cluster you want to deploy "project-name@dev" to 
+
+  workspace/prisma-eu1            Free development cluster (hosted on Prisma Cloud) 
+  workspace/prisma-us1            Free development cluster (hosted on Prisma Cloud) 
+❯ example-cluster        Local cluster (requires Docker) 
+                       
+  You can learn more about deployment in the docs: http://bit.ly/prisma-graphql-deployment
 ```
