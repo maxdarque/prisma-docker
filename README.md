@@ -9,15 +9,16 @@
 
 ## Current status
 
-Right now, I get the following error....any thoughts are more than welcome. This is the first time I'm using Docker
+Right now, I get the following error....any thoughts are more than welcome. 
 
 ```
 Recreating prisma ... done
 Attaching to prisma
 prisma    | Listening for transport dt_socket at address: 8000
-prisma    | Exception in thread "main" java.sql.SQLTransientConnectionException: internalRoot - Connection is not available, request timed out after 5003ms.
-prisma    | Caused by: java.sql.SQLNonTransientConnectionException: Could not connect to address=(host="my-rds-instance.eu-west-1.rds.amazonaws.com")(port=3306)(type=master) : "my-rds-instance.eu-west-1.rds.amazonaws.com"
-prisma    | Caused by: java.net.UnknownHostException: "my-rds-instance.eu-west-1.rds.amazonaws.com"
+prisma    | Obtaining exclusive agent lock...
+prisma    | Obtaining exclusive agent lock... Successful.
+prisma    | Fatal error during deployment worker initialization: java.sql.SQLSyntaxErrorException: (conn=2507) Table '${DB_NAME}.Migration' doesn't exist
+prisma exited with code 255
 ```
 
 ## Setting up your AWS MySQL RDS database
