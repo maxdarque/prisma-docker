@@ -9,7 +9,11 @@
 
 ## Current status
 
-It is working
+When I run `prisma deploy`, I get the following error:
+
+```
+Could not generate token for local cluster example-cluster. error:0906D06C:PEM routines:PEM_read_bio:no start line
+```
 
 ## Setting up your AWS MySQL RDS database
 
@@ -66,6 +70,8 @@ clusters:
     clusterSecret: my-private-key
 ```
 
+Alternatively you can use the `prisma cluster add` command to manage your `~/.prisma/config.yml` file
+
 ## Launch Docker
 
 The following command starts the docker instance using the docker-compose.yml file
@@ -115,4 +121,12 @@ Select your new private cluster (in this case `example-cluster`)
 ❯ example-cluster        Local cluster (requires Docker) 
                        
   You can learn more about deployment in the docs: http://bit.ly/prisma-graphql-deployment
+```
+
+**Alternatively you can edit your `.env` file on an exiting project**
+In order to deploy to your local prisma cluster from an existing project, you can edit your `.env` file. 
+
+```
+PRISMA_ENDPOINT=http://localhost:4466/<prisma-service>/<stage>
+PRISMA_CLUSTER=example-cluster
 ```

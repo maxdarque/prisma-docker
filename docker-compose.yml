@@ -1,7 +1,7 @@
 version: "3"
 services:
   prisma:
-    image: prismagraphql/prisma:1.3-beta
+    image: prismagraphql/prisma:1.2.8
     container_name: "prisma"
     restart: always
     # dns: 8.8.8.8
