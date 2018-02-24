@@ -124,6 +124,7 @@ Select your new private cluster (in this case `example-cluster`)
 ```
 
 **Alternatively you can edit your `.env` file on an exiting project**
+<br>
 In order to deploy to your local prisma cluster from an existing project, you can edit your `.env` file. 
 
 ```
