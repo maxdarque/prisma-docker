@@ -9,10 +9,11 @@
 
 ## Current status
 
-When I run `prisma deploy`, I get the following error:
+On `prisma deploy` to my local prisma in docker, I get the following error. See issue [issue #4](https://github.com/maxdarque/prisma-docker/issues/4)
 
 ```
-Could not generate token for local cluster example-cluster. error:0906D06C:PEM routines:PEM_read_bio:no start line
+Error: Cluster secret of cluster 'example-cluster' saved in ~/.prisma/config.yml
+does not match with the actual cluster secret of that cluster. This means the key pair got out of sync.
 ```
 
 ## Setting up your AWS MySQL RDS database
