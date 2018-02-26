@@ -9,16 +9,7 @@
 
 ## Current status
 
-On `prisma deploy` to my local prisma in docker, I get the following error. See issue [issue #4](https://github.com/maxdarque/prisma-docker/issues/4)
-
-```
-Error: Cluster secret of cluster 'example-cluster' saved in ~/.prisma/config.yml
-does not match with the actual cluster secret of that cluster. This means the key pair got out of sync.
-```
-
-Looks like a configuration issue and how private + public keys are parsed.
-
-I had to hardcode `CLUSTER_PUBLIC_KEY` and `SCHEMA_MANAGER_SECRET` into docker-compose.yml for Prisma. I also had to hardcode secret in prisma.yml on my graphql-server
+I had to hardcode `CLUSTER_PUBLIC_KEY` into docker-compose.yml for Prisma but it **works!**
 
 ## Setting up your AWS MySQL RDS database
 
@@ -64,7 +55,7 @@ Before applying that definition, we have to generate a public/private-keypair so
 }
 ```
 
-Make sure to store those values in a safe place. Now, copy the public key and paste it into your `.env` file under `CLUSTER_PUBLIC_KEY=your-key`.
+Make sure to store those values in a safe place. Normally I would copy the public key and paste it into your `.env` file under `CLUSTER_PUBLIC_KEY=your-key`. However I've had issues here and have been hardcoding my `CLUSTER_PUBLIC_KEY` into my `docker-compose.yml` file.
 
 Copy and paste the private key into `~/.prisma/config.yml` 
 
@@ -102,13 +93,16 @@ If you need it you can use the following to take down the instance
 docker-compose down
 ```
 
-## Deploy your prisma service
+## Configure and deploy your prisma service
 
 Initialize your project using
 
 ```
 prisma init
 ```
+
+In your `.env` file, update `PRISMA_SECRET` (and if you selected the graphql-server option your `APP_SECRET`) with a secret. You could use the `openssl rand -hex 20`.
+
 
 Deploy your project
 
