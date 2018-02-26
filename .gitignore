@@ -2,5 +2,3 @@ node_modules/
 .env
 package.json
 yarn.lock
-*.txt
-prisma.keys
