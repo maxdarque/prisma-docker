@@ -147,7 +147,7 @@ I'm not doing to tell you how to configure your Linux server in this section. Th
 
 I've been using Ubuntu on AWS EC2 so open up ports 80 and 443 on `ufw` and in the security group for HTTP and HTTPS respectively. Don't worry Caddy automatically forwards all HTTP traffic to HTTPS for you.
 
-I then save the `docker-compose.yml` file and `Caddyfile` from this repo on to my server.
+Then save the `docker-compose.yml` file and `Caddyfile` from this repo on to your server.
 
 Launch your `prisma` app with:
 
@@ -173,4 +173,4 @@ In the same directory as your `Caddyfile`, launch `caddy` using:
 caddy&
 ```
 
-Then your done and your private prisma cluster should be up and running with an encrypted endpoint.
+Then you're done and your private prisma cluster should be up and running with an encrypted endpoint.
