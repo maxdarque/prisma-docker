@@ -16,6 +16,10 @@ Error: Cluster secret of cluster 'example-cluster' saved in ~/.prisma/config.yml
 does not match with the actual cluster secret of that cluster. This means the key pair got out of sync.
 ```
 
+Looks like a configuration issue and how private + public keys are parsed.
+
+I had to hardcode `CLUSTER_PUBLIC_KEY` and `SCHEMA_MANAGER_SECRET` into docker-compose.yml for Prisma. I also had to hardcode secret in prisma.yml on my graphql-server
+
 ## Setting up your AWS MySQL RDS database
 
 Use the following [tutorial](https://gist.github.com/marktani/8631cb9c63d0973bcdd8bff19d6162c2) to setup a MySQL database on AWS RDS's free tier
@@ -132,3 +136,13 @@ In order to deploy to your local prisma cluster from an existing project, you ca
 PRISMA_ENDPOINT=http://localhost:4466/<prisma-service>/<stage>
 PRISMA_CLUSTER=example-cluster
 ```
+
+## Open playground
+
+To query with your new service on your cluster. Open your browser and go to: `http://localhost:4466/<name-of-service>/<stage>`. `name-of-service` and `stage` can be found in your `prisma.yml` file which you used to deploy your prisma service. 
+
+At this stage you haven't been authenticated so in the CLI go to your `prisma.yml` directory and run the `prisma token` command.
+
+In your browser, copy and paste your token into your playground in the `HTTP HEADERS` section like so:
+
+`{ "Authorization": "Bearer <token>"}`
