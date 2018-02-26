@@ -140,3 +140,37 @@ At this stage you haven't been authenticated so in the CLI go to your `prisma.ym
 In your browser, copy and paste your token into your playground in the `HTTP HEADERS` section like so:
 
 `{ "Authorization": "Bearer <token>"}`
+
+## Deploying your cluster to AWS EC2 or another cloud provider
+
+I'm not doing to tell you how to configure your Linux server in this section. That will up to you. You need to install [Docker](https://www.docker.com/get-docker) and [Caddy](https://caddyserver.com/download) (our webserver).
+
+I've been using Ubuntu on AWS EC2 so open up ports 80 and 443 on `ufw` and in the security group for HTTP and HTTPS respectively. Don't worry Caddy automatically forwards all HTTP traffic to HTTPS for you.
+
+I then save the `docker-compose.yml` file and `Caddyfile` from this repo on to my server.
+
+Launch your `prisma` app with:
+
+```
+docker-compose up -d
+```
+
+Edit your `Caddyfile` so it looks like the example below. `Caddy` will automatically generate and renew your SSL certificates with Let's Encrypt which is amazing. The first line of the config file is your domain at which you want to host your prisma cluster. **Note** Let's Encrypt does not like AWS domains so you can't use your EC2 URL. I created a subdomain and pointed it to my EC2 instance.
+
+```
+prisma.my-domain.com
+
+proxy / localhost:4466/ {
+ transparent
+}
+
+errors proxieserrors.log
+```
+
+In the same directory as your `Caddyfile`, launch `caddy` using:
+
+```
+caddy&
+```
+
+Then your done and your private prisma cluster should be up and running with an encrypted endpoint.

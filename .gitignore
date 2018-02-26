@@ -2,3 +2,4 @@ node_modules/
 .env
 package.json
 yarn.lock
+proxieserrors.log

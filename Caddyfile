@@ -1,0 +1,7 @@
+prisma.my-domain.com
+
+proxy / localhost:4466/ {
+ transparent
+}
+
+errors proxieserrors.log
