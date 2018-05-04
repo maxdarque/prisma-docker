@@ -2,6 +2,7 @@
 
 <br />
 
+- Only works with Prisma 1.6 and below. I will be updated the repo in the coming weeks
 - Project uses [graphcool/prisma](https://github.com/graphcool/prisma), Docker and AWS RDS MySQL.
 - The ultimate goal to is create a graphql server with [`graphql-yoga`](https://github.com/graphcool/graphql-yoga), `prisma` and AWS RDS MySQL.
 - In this repo, we are focused on setting up `prisma` so it can talk to our MySQL instance
