@@ -1,4 +1,4 @@
-<h1 align="center"><strong>How to connect a Prisma docker instance to your AWS RDS MySQL database</strong></h1>
+<h1 align="center"><strong>[Unmaintained] - How to connect a Prisma docker instance to your AWS RDS MySQL database</strong></h1>
 
 <br />
 
